@@ -1,5 +1,6 @@
 import React from "react";
 import '@/assets/styles/global.css';
+import NavBar from "@/components/NavBar";
 
 export const metadata = {
     title: 'Property Next',
@@ -11,7 +12,8 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <div>{children}</div>
+        <NavBar />
+        <main>{children}</main>
       </body>
     </html>
   );
