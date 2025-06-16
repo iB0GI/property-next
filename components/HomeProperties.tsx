@@ -1,9 +1,10 @@
 import React from "react";
-import properties from "@/properties.json";
 import PropertyCard from "@/components/PropertyCard";
 import Link from "next/link";
+import { fetchProperties } from "@/utils/requests";
 
-const HomeProperties = () => {
+const HomeProperties = async () => {
+  const properties = await fetchProperties();
   const recentProperties = properties
     .sort(() => Math.random() - Math.random())
     .slice(0, 3);
@@ -18,9 +19,11 @@ const HomeProperties = () => {
             {recentProperties.length === 0 ? (
               <p>No properties found</p>
             ) : (
-              recentProperties.map((property, index) => (
-                <PropertyCard property={property} key={index} />
-              ))
+              recentProperties.map(
+                (property: any, index: React.Key | null | undefined) => (
+                  <PropertyCard property={property} key={index} />
+                )
+              )
             )}
           </div>
         </div>

@@ -2,6 +2,13 @@ import React from "react";
 import "@/assets/styles/global.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import { Poppins } from 'next/font/google';
+import AuthProvider from "@/components/AuthProvider";
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+});
 
 export const metadata = {
   title: "Property Next",
@@ -11,13 +18,15 @@ export const metadata = {
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
+    <AuthProvider>
     <html lang="en">
-      <body>
+      <body className={poppins.className}>
         <NavBar />
         <main>{children}</main>
         <Footer />
       </body>
     </html>
+    </AuthProvider>
   );
 };
 
