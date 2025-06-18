@@ -1,8 +1,9 @@
-import { AuthOptions } from "next-auth";
+import { type NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import type { Account, Profile, User } from "next-auth";
+import connectDB from "@/config/database";
+import UserModel from "@/models/User";
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -17,28 +18,29 @@ export const authOptions: AuthOptions = {
     }),
   ],
   callbacks: {
-    // Invoked on successful sign-in
-    signIn: async ({
-      user,
-      account,
-      profile,
-      email,
-      credentials,
-    }: {
-      user: User;
-      account: Account | null;
-      profile?: Profile;
-      email?: { verificationRequest?: boolean };
-      credentials?: Record<string, unknown>;
-    }) => {
-      // ✅ Add your sign-in logic here
-      return true; // Must return a boolean or a redirect URL string
+    async signIn({ user }) {
+      await connectDB();
+      const userExists = await UserModel.findOne({ email: user.email });
+      if (!userExists) {
+        await UserModel.create({
+          email: user.email,
+          username: user.name?.slice(0, 20),
+          image: user.image,
+        });
+      }
+      return true;
     },
 
-    // Modifies the session object
-    async session({ session }: { session: any }) {
-      // ✅ Example:
-      // session.user.id = 'your-database-id';
+    async session({ session }) {
+      if (!session.user?.email) {
+        return session;
+      }
+
+      const user = await UserModel.findOne({ email: session.user.email });
+      if (user) {
+        session.user.id = user._id.toString();
+      }
+
       return session;
     },
   },
