@@ -2,12 +2,14 @@ import React from "react";
 import "@/assets/styles/global.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import { Poppins } from 'next/font/google';
+import { Poppins } from "next/font/google";
 import AuthProvider from "@/components/AuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -19,13 +21,14 @@ export const metadata = {
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthProvider>
-    <html lang="en">
-      <body className={poppins.className}>
-        <NavBar />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+      <html lang="en">
+        <body className={poppins.className}>
+          <NavBar />
+          <main>{children}</main>
+          <Footer />
+          <ToastContainer />
+        </body>
+      </html>
     </AuthProvider>
   );
 };
