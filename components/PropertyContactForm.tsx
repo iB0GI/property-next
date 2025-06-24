@@ -56,12 +56,7 @@ const PropertyContactForm = ({ property }: { property: Property }) => {
       ) : wasSubmitted ? (
         <p className="text-green-500 mb-4">Message submitted</p>
       ) : (
-        <form
-          action="mailto:support@traversymedia.com"
-          method="post"
-          encType="text/plain"
-          onSubmit={handleSubmit}
-        >
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
