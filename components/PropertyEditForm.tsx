@@ -177,7 +177,7 @@ const PropertyEditForm = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
+          <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
             Listing Name
           </label>
           <input
@@ -252,7 +252,7 @@ const PropertyEditForm = () => {
         </div>
 
         <div className="mb-4 flex flex-wrap">
-          <div className="w-full sm:w-1/3 pr-2">
+          <div className="w-full sm:w-1/3 sm:pr-2">
             <label
               htmlFor="beds"
               className="block text-gray-700 font-bold mb-2"
@@ -269,7 +269,7 @@ const PropertyEditForm = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="w-full sm:w-1/3 px-2">
+          <div className="w-full px:0 sm:w-1/3 sm:px-2">
             <label
               htmlFor="baths"
               className="block text-gray-700 font-bold mb-2"
@@ -286,7 +286,7 @@ const PropertyEditForm = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="w-full sm:w-1/3 pl-2">
+          <div className="w-full pl:0 sm:w-1/3 sm:pl-2">
             <label
               htmlFor="square_feet"
               className="block text-gray-700 font-bold mb-2"
