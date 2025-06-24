@@ -4,6 +4,8 @@ import Link from "next/link";
 import { fetchProperties } from "@/utils/requests";
 import  IProperty from "@/types/IProperty";
 
+export const dynamic = "force-dynamic";
+
 const HomeProperties = async () => {
   const data = await fetchProperties();
   const recentProperties = data.properties
