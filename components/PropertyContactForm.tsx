@@ -73,6 +73,7 @@ const PropertyContactForm = ({ property }: { property: Property }) => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
+              name="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -88,6 +89,7 @@ const PropertyContactForm = ({ property }: { property: Property }) => {
             <textarea
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 h-44 focus:outline-none focus:shadow-outline"
               id="message"
+              name="message"
               placeholder="Enter your message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
