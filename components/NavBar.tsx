@@ -26,7 +26,9 @@ const NavBar = () => {
       setProviders(res);
     };
     setAuthProviders();
-  }, []);
+    setIsMobileMenuOpen(false);
+    setIsProfileMenuOpen(false);
+  }, [pathname]);
 
   return (
     <nav className="bg-blue-700 border-b border-blue-500">

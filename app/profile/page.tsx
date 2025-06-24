@@ -71,9 +71,9 @@ const ProfilePage = () => {
           <h1 className="text-3xl font-bold mb-4">Your Profile</h1>
 
           <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/4 mx-20 mt-10">
-              <div className="mb-4">
-                <Link href="/property.html">
+            <div className="md:w-1/4 mt-10">
+              <div className="mb-4 mx-10">
+                <Link href="/properties">
                   <Image
                     className="h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0"
                     src={profileImage || profileDefault}
@@ -84,13 +84,15 @@ const ProfilePage = () => {
                   />
                 </Link>
               </div>
-
-              <h2 className="text-2xl mb-4">
-                <span className="font-bold block">Name: </span> {profileName}
-              </h2>
-              <h2 className="text-2xl">
-                <span className="font-bold block">Email: </span> {profileEmail}
-              </h2>
+              <div className="flex flex-col gap-0.5 w-full mb-10">
+                <h2 className="text-2xl mb-4">
+                  <span className="font-bold block">Name: </span> {profileName}
+                </h2>
+                <h2 className="text-2xl">
+                  <span className="font-bold block">Email: </span>{" "}
+                  {profileEmail}
+                </h2>
+              </div>
             </div>
             <div className="md:w-3/4 md:pl-4">
               <h2 className="text-xl font-semibold mb-4">Your Listings</h2>
