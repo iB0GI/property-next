@@ -6,6 +6,7 @@ import { Poppins } from "next/font/google";
 import AuthProvider from "@/components/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { GlobalProvider } from "@/context/GlobalContext";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,16 +21,18 @@ export const metadata = {
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <AuthProvider>
-      <html lang="en">
-        <body className={poppins.className}>
-          <NavBar />
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer />
-        </body>
-      </html>
-    </AuthProvider>
+    <GlobalProvider>
+      <AuthProvider>
+        <html lang="en">
+          <body className={poppins.className}>
+            <NavBar />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer />
+          </body>
+        </html>
+      </AuthProvider>
+    </GlobalProvider>
   );
 };
 

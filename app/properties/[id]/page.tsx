@@ -10,7 +10,7 @@ import PropertyDetails from "@/components/PropertyDetails";
 import BookmarkButton from "@/components/BookmarkButton";
 import Property from "@/types/IProperty";
 import ShareButton from "@/components/ShareButton";
-import PropertyContact from "@/components/PropertyContact";
+import PropertyContactForm from "@/components/PropertyContactForm";
 
 const PropertyPage = () => {
   const { id } = useParams();
@@ -68,7 +68,7 @@ const PropertyPage = () => {
                   <ShareButton property={property} />
 
                   {/* <!-- Contact Form --> */}
-                  <PropertyContact property={property} />
+                  <PropertyContactForm property={property} />
                 </aside>
               </div>
             </div>
